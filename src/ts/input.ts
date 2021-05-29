@@ -1,5 +1,8 @@
-export default class InputHandler {
-  constructor(paddle, game) {
+import { Game } from "./game";
+import { Paddle } from "./paddle";
+
+export class InputHandler {
+  constructor(paddle: Paddle, game: Game) {
     document.addEventListener('keydown', (event) => {
       switch(event.key) {
         case 'a': {

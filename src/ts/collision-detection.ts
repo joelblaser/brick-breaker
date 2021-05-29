@@ -1,4 +1,8 @@
-export function detectBrickCollision(ball, brick) {
+import { Ball } from "./ball";
+import { Brick } from "./brick";
+import { Paddle } from "./paddle";
+
+export function detectBrickCollision(ball: Ball, brick: Brick) {
   const bottomOfBall = ball.position.y + ball.size;
   const topOfBall = ball.position.y;
 
@@ -15,7 +19,7 @@ export function detectBrickCollision(ball, brick) {
   );
 }
 
-export function detectPaddleCollision(ball, paddle) {
+export function detectPaddleCollision(ball: Ball, paddle: Paddle) {
   const bottomOfBall = ball.position.y + ball.size;
 
   const topOfPaddle = paddle.position.y;

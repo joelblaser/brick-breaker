@@ -1,6 +1,6 @@
-import Game from './game';
+import { Game } from './game';
 
-let canvas = document.getElementById('screen');
+let canvas = <HTMLCanvasElement> document.getElementById('screen');
 let ctx = canvas.getContext('2d');
 
 const GAME_WIDTH = 800;

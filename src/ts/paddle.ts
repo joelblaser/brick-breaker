@@ -1,21 +1,27 @@
-export default class Paddle {
-  constructor(game) {
+import { Game } from "./game";
+
+export class Paddle {
+  gameWidth: number;
+  width: number = 150;
+  height: number = 30;
+
+  position: { x: number; y: number };
+
+  maxSpeed: number = 5;
+  speed: number = 0;
+
+  constructor(game: Game) {
     this.gameWidth = game.gameWidth;
-    this.width = 150;
-    this.heigt = 30;
 
     this.position = {
       x: game.gameWidth / 2 - this.width / 2,
-      y: game.gameHeight - this.heigt - 10,
+      y: game.gameHeight - this.height - 10,
     };
-
-    this.maxSpeed = 5;
-    this.speed = 0;
   }
 
-  draw(ctx) {
+  draw(ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = '#0ff';
-    ctx.fillRect(this.position.x, this.position.y, this.width, this.heigt);
+    ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
   moveLeft() {

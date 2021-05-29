@@ -1,11 +1,19 @@
 import { detectPaddleCollision } from './collision-detection';
+import { Game } from './game';
 
-export default class Ball {
-  constructor(game) {
-    this.image = document.getElementById('img_ball');
+export class Ball {
+  image: CanvasImageSource;
+
+  game: Game;
+  size: number = 16;
+
+  position: { x: number; y: number };
+  speed: { x: number; y: number };
+
+  constructor(game: Game) {
+    this.image = <CanvasImageSource> document.getElementById('img_ball');
 
     this.game = game;
-    this.size = 16;
     this.reset();
   }
 
@@ -20,7 +28,7 @@ export default class Ball {
     };
   }
 
-  draw(ctx) {
+  draw(ctx: CanvasRenderingContext2D) {
     ctx.drawImage(
       this.image,
       this.position.x,

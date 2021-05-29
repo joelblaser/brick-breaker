@@ -1,37 +1,44 @@
-import Ball from './ball';
-import InputHandler from './input';
+import { Ball } from './ball';
+import { Brick } from './brick';
+import { InputHandler } from './input';
 import { buildLevel, levels } from './levels';
-import Paddle from './paddle';
+import { Paddle } from './paddle';
 
-const GAMESTATE = {
-  PAUSED: 0,
-  RUNNING: 1,
-  MENU: 2,
-  GAMEOVER: 3,
-  NEWLEVEL: 4,
-};
+enum Gamestate {
+  PAUSED,
+  RUNNING,
+  MENU,
+  GAMEOVER,
+  NEWLEVEL,
+}
 
-export default class Game {
-  constructor(gameWidth, gameHeight) {
+export class Game {
+  gameWidth: number;
+  gameHeight: number;
+  gamestate: Gamestate = Gamestate.MENU;
+
+  lives: number = 3;
+  currentLevel: number = 0;
+
+  ball: Ball;
+  paddle: Paddle;
+  gameObjects: any = [];
+  bricks: Brick[] = [];
+
+  constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.gamestate = GAMESTATE.MENU;
-
-    this.lives = 3;
-    this.currentLevel = 0;
 
     this.ball = new Ball(this);
     this.paddle = new Paddle(this);
-    this.gameObjects = [];
-    this.bricks = [];
 
     new InputHandler(this.paddle, this);
   }
 
   start() {
     if (
-      this.gamestate !== GAMESTATE.MENU &&
-      this.gamestate !== GAMESTATE.NEWLEVEL
+      this.gamestate !== Gamestate.MENU &&
+      this.gamestate !== Gamestate.NEWLEVEL
     ) {
       return;
     }
@@ -40,15 +47,15 @@ export default class Game {
     this.ball.reset();
     this.gameObjects = [this.ball, this.paddle];
 
-    this.gamestate = GAMESTATE.RUNNING;
+    this.gamestate = Gamestate.RUNNING;
   }
 
   update() {
     if (this.lives === 0) {
-      this.gamestate = GAMESTATE.GAMEOVER;
+      this.gamestate = Gamestate.GAMEOVER;
     }
 
-    if (this.gamestate !== GAMESTATE.RUNNING) {
+    if (this.gamestate !== Gamestate.RUNNING) {
       return;
     }
 
@@ -56,7 +63,7 @@ export default class Game {
       if (this.currentLevel < levels.length - 1) {
         this.currentLevel++;
       }
-      this.gamestate = GAMESTATE.NEWLEVEL;
+      this.gamestate = Gamestate.NEWLEVEL;
       this.start();
     }
 
@@ -67,13 +74,13 @@ export default class Game {
     this.bricks = this.bricks.filter((brick) => !brick.markedForDeletion);
   }
 
-  draw(ctx) {
+  draw(ctx: CanvasRenderingContext2D) {
     [...this.gameObjects, ...this.bricks].forEach((object) => {
       object.draw(ctx);
     });
 
     switch (this.gamestate) {
-      case GAMESTATE.PAUSED: {
+      case Gamestate.PAUSED: {
         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
         ctx.fillStyle = 'rgb(0, 0, 0, 0.5)';
         ctx.fill();
@@ -85,7 +92,7 @@ export default class Game {
 
         break;
       }
-      case GAMESTATE.MENU: {
+      case Gamestate.MENU: {
         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
         ctx.fillStyle = 'rgb(0, 0, 0, 1)';
         ctx.fill();
@@ -101,7 +108,7 @@ export default class Game {
 
         break;
       }
-      case GAMESTATE.GAMEOVER: {
+      case Gamestate.GAMEOVER: {
         ctx.rect(0, 0, this.gameWidth, this.gameHeight);
         ctx.fillStyle = 'rgb(0, 0, 0, 1)';
         ctx.fill();
@@ -117,10 +124,10 @@ export default class Game {
   }
 
   togglePause() {
-    if (this.gamestate == GAMESTATE.PAUSED) {
-      this.gamestate = GAMESTATE.RUNNING;
+    if (this.gamestate == Gamestate.PAUSED) {
+      this.gamestate = Gamestate.RUNNING;
     } else {
-      this.gamestate = GAMESTATE.PAUSED;
+      this.gamestate = Gamestate.PAUSED;
     }
   }
 }
