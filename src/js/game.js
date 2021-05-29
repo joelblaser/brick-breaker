@@ -43,7 +43,7 @@ export default class Game {
     this.gamestate = GAMESTATE.RUNNING;
   }
 
-  update(dt) {
+  update() {
     if (this.lives === 0) {
       this.gamestate = GAMESTATE.GAMEOVER;
     }
@@ -61,7 +61,7 @@ export default class Game {
     }
 
     [...this.gameObjects, ...this.bricks].forEach((object) => {
-      object.update(dt);
+      object.update();
     });
 
     this.bricks = this.bricks.filter((brick) => !brick.markedForDeletion);

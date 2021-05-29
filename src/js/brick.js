@@ -13,7 +13,7 @@ export default class Brick {
     this.markedForDeletion = false;
   }
 
-  update(dt) {
+  update() {
     if (detectBrickCollision(this.game.ball, this)) {
       this.game.ball.speed.y = -this.game.ball.speed.y
 
