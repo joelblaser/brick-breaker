@@ -1,4 +1,4 @@
-import { Brick } from './game-objects/brick';
+import { Brick } from './objects/brick.object';
 import { Game } from './game';
 import { Position } from './models/position.model';
 

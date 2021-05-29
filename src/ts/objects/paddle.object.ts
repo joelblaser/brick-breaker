@@ -1,17 +1,16 @@
-import { Game } from "../game";
-import { Position } from "../models/position.model";
+import { Game } from '../game';
+import { GameObject } from './game.object';
 
-export class Paddle {
+export class Paddle extends GameObject {
   gameWidth: number;
   width: number = 150;
   height: number = 30;
-
-  position: Position;
 
   maxSpeed: number = 5;
   speed: number = 0;
 
   constructor(game: Game) {
+    super();
     this.gameWidth = game.gameWidth;
 
     this.position = {

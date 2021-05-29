@@ -1,10 +1,10 @@
-import { Game } from "./game";
-import { Paddle } from "./game-objects/paddle";
+import { Game } from './game';
+import { Paddle } from './objects/paddle.object';
 
 export class InputHandler {
   constructor(paddle: Paddle, game: Game) {
     document.addEventListener('keydown', (event) => {
-      switch(event.key) {
+      switch (event.key) {
         case 'a': {
           paddle.moveLeft();
           break;
@@ -25,7 +25,7 @@ export class InputHandler {
     });
 
     document.addEventListener('keyup', (event) => {
-      switch(event.key) {
+      switch (event.key) {
         case 'a': {
           if (paddle.speed < 0) {
             paddle.stop();

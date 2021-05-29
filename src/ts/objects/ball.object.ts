@@ -1,17 +1,17 @@
 import { detectPaddleCollision } from '../collision-detection';
 import { Game } from '../game';
-import { Position } from '../models/position.model';
+import { GameObject } from './game.object';
 
-export class Ball {
+export class Ball extends GameObject {
   image: CanvasImageSource;
 
   game: Game;
   size: number = 16;
 
-  position: Position;
   speed: { x: number; y: number };
 
   constructor(game: Game) {
+    super();
     this.image = <CanvasImageSource> document.getElementById('img_ball');
 
     this.game = game;

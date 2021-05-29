@@ -1,6 +1,6 @@
-import { Ball } from "./game-objects/ball";
-import { Brick } from "./game-objects/brick";
-import { Paddle } from "./game-objects/paddle";
+import { Ball } from './objects/ball.object';
+import { Brick } from './objects/brick.object';
+import { Paddle } from './objects/paddle.object';
 
 export function detectBrickCollision(ball: Ball, brick: Brick) {
   const bottomOfBall = ball.position.y + ball.size;

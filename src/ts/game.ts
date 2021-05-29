@@ -1,8 +1,9 @@
-import { Ball } from './game-objects/ball';
-import { Brick } from './game-objects/brick';
+import { Ball } from './objects/ball.object';
+import { Brick } from './objects/brick.object';
 import { InputHandler } from './input';
 import { buildLevel, levels } from './levels';
-import { Paddle } from './game-objects/paddle';
+import { Paddle } from './objects/paddle.object';
+import { GameObject } from './objects/game.object';
 
 enum Gamestate {
   PAUSED,
@@ -22,7 +23,7 @@ export class Game {
 
   ball: Ball;
   paddle: Paddle;
-  gameObjects: any = [];
+  gameObjects: GameObject[] = [];
   bricks: Brick[] = [];
 
   constructor(gameWidth: number, gameHeight: number) {

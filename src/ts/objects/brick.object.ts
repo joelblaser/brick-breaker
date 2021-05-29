@@ -1,23 +1,23 @@
 import { detectBrickCollision } from '../collision-detection';
 import { Game } from '../game';
 import { Position } from '../models/position.model';
+import { GameObject } from './game.object';
 
-export class Brick {
+export class Brick extends GameObject {
   image: CanvasImageSource;
 
   game: Game;
 
-  position: Position;
   width: number = 80;
   height: number = 24;
 
   markedForDeletion: boolean = false;
 
   constructor(game: Game, position: Position) {
+    super();
     this.image = <CanvasImageSource> document.getElementById('img_brick');
 
     this.game = game;
-
     this.position = position;
   }
 
