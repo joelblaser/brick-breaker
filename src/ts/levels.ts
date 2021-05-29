@@ -1,12 +1,14 @@
 import { Brick } from './brick';
+import { Game } from './game';
+import { Position } from './models/position.model';
 
-export function buildLevel(game, level) {
-  let bricks = [];
+export function buildLevel(game: Game, level: number[][]) {
+  let bricks: Brick[] = [];
 
   level.forEach((row, rowIndex) => {
     row.forEach((brick, brickIndex) => {
       if (brick === 1) {
-        let position = {
+        const position: Position = {
           x: 80 * brickIndex,
           y: 75 + 24 * rowIndex,
         };

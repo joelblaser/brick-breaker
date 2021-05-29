@@ -1,5 +1,6 @@
 import { detectPaddleCollision } from './collision-detection';
 import { Game } from './game';
+import { Position } from './models/position.model';
 
 export class Ball {
   image: CanvasImageSource;
@@ -7,7 +8,7 @@ export class Ball {
   game: Game;
   size: number = 16;
 
-  position: { x: number; y: number };
+  position: Position;
   speed: { x: number; y: number };
 
   constructor(game: Game) {

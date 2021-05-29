@@ -1,11 +1,12 @@
 import { Game } from "./game";
+import { Position } from "./models/position.model";
 
 export class Paddle {
   gameWidth: number;
   width: number = 150;
   height: number = 30;
 
-  position: { x: number; y: number };
+  position: Position;
 
   maxSpeed: number = 5;
   speed: number = 0;
