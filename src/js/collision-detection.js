@@ -1,16 +1,30 @@
-export function detectCollision(ball, gameObject) {
+export function detectBrickCollision(ball, brick) {
   const bottomOfBall = ball.position.y + ball.size;
   const topOfBall = ball.position.y;
 
-  const topOfObject = gameObject.position.y;
-  const leftSideOfObject = gameObject.position.x;
-  const rightSideOfObject = gameObject.position.x + gameObject.width;
-  const bottomOfObject = gameObject.position.y + gameObject.height;
+  const topOfBrick = brick.position.y;
+  const leftSideOfBrick = brick.position.x;
+  const rightSideOfBrick = brick.position.x + brick.width;
+  const bottomOfBrick = brick.position.y + brick.height;
 
   return (
-    bottomOfBall >= topOfObject &&
-    topOfBall <= bottomOfObject &&
-    ball.position.x >= leftSideOfObject &&
-    ball.position.x + ball.size <= rightSideOfObject
+    bottomOfBall >= topOfBrick &&
+    topOfBall <= bottomOfBrick &&
+    ball.position.x >= leftSideOfBrick &&
+    ball.position.x + ball.size <= rightSideOfBrick
+  );
+}
+
+export function detectPaddleCollision(ball, paddle) {
+  const bottomOfBall = ball.position.y + ball.size;
+
+  const topOfPaddle = paddle.position.y;
+  const leftSideOfPaddle = paddle.position.x;
+  const rightSideOfPaddle = paddle.position.x + paddle.width;
+
+  return (
+    bottomOfBall >= topOfPaddle &&
+    ball.position.x >= leftSideOfPaddle &&
+    ball.position.x + ball.size <= rightSideOfPaddle
   );
 }
