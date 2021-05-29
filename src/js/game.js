@@ -53,7 +53,9 @@ export default class Game {
     }
 
     if (this.bricks.length === 0) {
-      this.currentLevel++;
+      if (this.currentLevel < levels.length - 1) {
+        this.currentLevel++;
+      }
       this.gamestate = GAMESTATE.NEWLEVEL;
       this.start();
     }
