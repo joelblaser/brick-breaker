@@ -1,0 +1,20 @@
+html,
+body {
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#screen {
+  border: 1px solid black;
+}
+
+img {
+  display: none;
+}

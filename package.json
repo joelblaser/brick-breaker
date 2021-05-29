@@ -1,0 +1,17 @@
+{
+  "name": "brick-breaker",
+  "version": "1.0.0",
+  "description": "Brick Breaker Browser Game",
+  "type": "module",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html"
+  },
+  "keywords": [],
+  "author": "Joel Blaser",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.2"
+  }
+}
