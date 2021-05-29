@@ -1,5 +1,5 @@
 import { Game } from "./game";
-import { Paddle } from "./paddle";
+import { Paddle } from "./game-objects/paddle";
 
 export class InputHandler {
   constructor(paddle: Paddle, game: Game) {

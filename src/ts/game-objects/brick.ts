@@ -1,6 +1,6 @@
-import { detectBrickCollision } from './collision-detection';
-import { Game } from './game';
-import { Position } from './models/position.model';
+import { detectBrickCollision } from '../collision-detection';
+import { Game } from '../game';
+import { Position } from '../models/position.model';
 
 export class Brick {
   image: CanvasImageSource;

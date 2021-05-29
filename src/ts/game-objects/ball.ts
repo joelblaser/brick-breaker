@@ -1,6 +1,6 @@
-import { detectPaddleCollision } from './collision-detection';
-import { Game } from './game';
-import { Position } from './models/position.model';
+import { detectPaddleCollision } from '../collision-detection';
+import { Game } from '../game';
+import { Position } from '../models/position.model';
 
 export class Ball {
   image: CanvasImageSource;

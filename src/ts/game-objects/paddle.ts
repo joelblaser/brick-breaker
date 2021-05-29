@@ -1,5 +1,5 @@
-import { Game } from "./game";
-import { Position } from "./models/position.model";
+import { Game } from "../game";
+import { Position } from "../models/position.model";
 
 export class Paddle {
   gameWidth: number;

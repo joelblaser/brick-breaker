@@ -1,8 +1,8 @@
-import { Ball } from './ball';
-import { Brick } from './brick';
+import { Ball } from './game-objects/ball';
+import { Brick } from './game-objects/brick';
 import { InputHandler } from './input';
 import { buildLevel, levels } from './levels';
-import { Paddle } from './paddle';
+import { Paddle } from './game-objects/paddle';
 
 enum Gamestate {
   PAUSED,
