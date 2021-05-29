@@ -17,13 +17,13 @@ export default class Game {
     this.gameHeight = gameHeight;
     this.gamestate = GAMESTATE.MENU;
 
+    this.lives = 3;
+    this.currentLevel = 0;
+
     this.ball = new Ball(this);
     this.paddle = new Paddle(this);
     this.gameObjects = [];
     this.bricks = [];
-
-    this.lives = 3;
-    this.currentLevel = 0;
 
     new InputHandler(this.paddle, this);
   }
