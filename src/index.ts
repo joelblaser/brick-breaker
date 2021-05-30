@@ -1,4 +1,4 @@
-import { Game } from './game';
+import { Game } from './game/game';
 
 let canvas = <HTMLCanvasElement> document.getElementById('screen');
 let ctx = canvas.getContext('2d');
