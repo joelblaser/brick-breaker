@@ -4,6 +4,7 @@ import { InputHandler } from './input';
 import { buildLevel, levels } from './levels';
 import { Paddle } from './objects/paddle.object';
 import { GameObject } from './objects/game.object';
+import { Overlay } from './objects/overlay.object';
 
 enum Gamestate {
   PAUSED,
@@ -26,12 +27,16 @@ export class Game {
   gameObjects: GameObject[] = [];
   bricks: Brick[] = [];
 
+  overlay: Overlay;
+
   constructor(gameWidth: number, gameHeight: number) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
 
     this.ball = new Ball(this);
     this.paddle = new Paddle(this);
+
+    this.overlay = new Overlay(this);
 
     new InputHandler(this.paddle, this);
   }
@@ -46,7 +51,7 @@ export class Game {
 
     this.bricks = buildLevel(this, levels[this.currentLevel]);
     this.ball.reset();
-    this.gameObjects = [this.ball, this.paddle];
+    this.gameObjects = [this.ball, this.paddle, this.overlay];
 
     this.gamestate = Gamestate.RUNNING;
   }
