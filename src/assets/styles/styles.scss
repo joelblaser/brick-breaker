@@ -3,18 +3,18 @@ body {
   margin: 0;
 }
 
+img {
+  display: none;
+}
+
 .container {
   height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-}
 
-#screen {
-  border: 1px solid black;
-}
-
-img {
-  display: none;
+  #screen {
+    border: 1px solid black;
+  }
 }
